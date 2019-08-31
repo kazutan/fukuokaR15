@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>3 Case 3: 特定期間の指定･切り出し問題 | データハンドリングFAQ v0.1</title>
+  <meta name="description" content="3 Case 3: 特定期間の指定･切り出し問題 | データハンドリングFAQ v0.1">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="3 Case 3: 特定期間の指定･切り出し問題 | データハンドリングFAQ v0.1" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Case 3: 特定期間の指定･切り出し問題 | データハンドリングFAQ v0.1" />
+  
+  
+  
+
+<meta name="author" content="前田和寛(@kazutan)">
+
+
+<meta name="date" content="2019-08-31">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="02_case_two.html">
+<link rel="next" href="04_case_four.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./index.html">データハンドリングFAQ v0.1</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>はじめに</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#参考資料"><i class="fa fa-check"></i>参考資料</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="01_case_one.html"><a href="01_case_one.html"><i class="fa fa-check"></i><b>1</b> Case 1: multi-gather/spread問題</a><ul>
+<li class="chapter" data-level="1.1" data-path="01_case_one.html"><a href="01_case_one.html#question-1"><i class="fa fa-check"></i><b>1.1</b> Question 1</a></li>
+<li class="chapter" data-level="1.2" data-path="01_case_one.html"><a href="01_case_one.html#answer"><i class="fa fa-check"></i><b>1.2</b> Answer</a></li>
+<li class="chapter" data-level="1.3" data-path="01_case_one.html"><a href="01_case_one.html#解説"><i class="fa fa-check"></i><b>1.3</b> 解説</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="01_case_one.html"><a href="01_case_one.html#考え方"><i class="fa fa-check"></i><b>1.3.1</b> 考え方</a></li>
+<li class="chapter" data-level="1.3.2" data-path="01_case_one.html"><a href="01_case_one.html#手順"><i class="fa fa-check"></i><b>1.3.2</b> 手順</a></li>
+<li class="chapter" data-level="1.3.3" data-path="01_case_one.html"><a href="01_case_one.html#応用"><i class="fa fa-check"></i><b>1.3.3</b> 応用</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="01_case_one.html"><a href="01_case_one.html#参考資料-1"><i class="fa fa-check"></i><b>1.4</b> 参考資料</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="02_case_two.html"><a href="02_case_two.html"><i class="fa fa-check"></i><b>2</b> Case 2: ファイル一気読み問題</a><ul>
+<li class="chapter" data-level="2.1" data-path="02_case_two.html"><a href="02_case_two.html#question-2"><i class="fa fa-check"></i><b>2.1</b> Question 2</a></li>
+<li class="chapter" data-level="2.2" data-path="02_case_two.html"><a href="02_case_two.html#answer-1"><i class="fa fa-check"></i><b>2.2</b> Answer</a></li>
+<li class="chapter" data-level="2.3" data-path="02_case_two.html"><a href="02_case_two.html#解説-1"><i class="fa fa-check"></i><b>2.3</b> 解説</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="02_case_two.html"><a href="02_case_two.html#考え方-1"><i class="fa fa-check"></i><b>2.3.1</b> 考え方</a></li>
+<li class="chapter" data-level="2.3.2" data-path="02_case_two.html"><a href="02_case_two.html#手順-1"><i class="fa fa-check"></i><b>2.3.2</b> 手順</a></li>
+<li class="chapter" data-level="2.3.3" data-path="02_case_two.html"><a href="02_case_two.html#応用-1"><i class="fa fa-check"></i><b>2.3.3</b> 応用</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="02_case_two.html"><a href="02_case_two.html#参考資料-2"><i class="fa fa-check"></i><b>2.4</b> 参考資料</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="03_case_three.html"><a href="03_case_three.html"><i class="fa fa-check"></i><b>3</b> Case 3: 特定期間の指定･切り出し問題</a><ul>
+<li class="chapter" data-level="3.1" data-path="03_case_three.html"><a href="03_case_three.html#想定シナリオ"><i class="fa fa-check"></i><b>3.1</b> 想定シナリオ</a></li>
+<li class="chapter" data-level="3.2" data-path="03_case_three.html"><a href="03_case_three.html#処理の実行"><i class="fa fa-check"></i><b>3.2</b> 処理の実行</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="03_case_three.html"><a href="03_case_three.html#パッケージ読み込み"><i class="fa fa-check"></i><b>3.2.1</b> パッケージ読み込み</a></li>
+<li class="chapter" data-level="3.2.2" data-path="03_case_three.html"><a href="03_case_three.html#データ読み込み"><i class="fa fa-check"></i><b>3.2.2</b> データ読み込み</a></li>
+<li class="chapter" data-level="3.2.3" data-path="03_case_three.html"><a href="03_case_three.html#データハンドリングと可視化"><i class="fa fa-check"></i><b>3.2.3</b> データハンドリングと可視化</a></li>
+<li class="chapter" data-level="3.2.4" data-path="03_case_three.html"><a href="03_case_three.html#解説-2"><i class="fa fa-check"></i><b>3.2.4</b> 解説</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="03_case_three.html"><a href="03_case_three.html#参照"><i class="fa fa-check"></i><b>3.3</b> 参照</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="04_case_four.html"><a href="04_case_four.html"><i class="fa fa-check"></i><b>4</b> Case 4: Nested df問題</a><ul>
+<li class="chapter" data-level="4.1" data-path="04_case_four.html"><a href="04_case_four.html#question-4"><i class="fa fa-check"></i><b>4.1</b> Question 4</a></li>
+<li class="chapter" data-level="4.2" data-path="04_case_four.html"><a href="04_case_four.html#answer-2"><i class="fa fa-check"></i><b>4.2</b> Answer</a></li>
+<li class="chapter" data-level="4.3" data-path="04_case_four.html"><a href="04_case_four.html#解説-3"><i class="fa fa-check"></i><b>4.3</b> 解説</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="04_case_four.html"><a href="04_case_four.html#考え方-2"><i class="fa fa-check"></i><b>4.3.1</b> 考え方</a></li>
+<li class="chapter" data-level="4.3.2" data-path="04_case_four.html"><a href="04_case_four.html#手順-2"><i class="fa fa-check"></i><b>4.3.2</b> 手順</a></li>
+<li class="chapter" data-level="4.3.3" data-path="04_case_four.html"><a href="04_case_four.html#応用-2"><i class="fa fa-check"></i><b>4.3.3</b> 応用</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="04_case_four.html"><a href="04_case_four.html#参考資料-3"><i class="fa fa-check"></i><b>4.4</b> 参考資料</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="05_case_five.html"><a href="05_case_five.html"><i class="fa fa-check"></i><b>5</b> Case 5: window関数問題</a><ul>
+<li class="chapter" data-level="5.1" data-path="05_case_five.html"><a href="05_case_five.html#question-5"><i class="fa fa-check"></i><b>5.1</b> Question 5</a></li>
+<li class="chapter" data-level="5.2" data-path="05_case_five.html"><a href="05_case_five.html#answer-3"><i class="fa fa-check"></i><b>5.2</b> Answer</a></li>
+<li class="chapter" data-level="5.3" data-path="05_case_five.html"><a href="05_case_five.html#解説-4"><i class="fa fa-check"></i><b>5.3</b> 解説</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="05_case_five.html"><a href="05_case_five.html#考え方-3"><i class="fa fa-check"></i><b>5.3.1</b> 考え方</a></li>
+<li class="chapter" data-level="5.3.2" data-path="05_case_five.html"><a href="05_case_five.html#手順-3"><i class="fa fa-check"></i><b>5.3.2</b> 手順</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="05_case_five.html"><a href="05_case_five.html#応用-3"><i class="fa fa-check"></i><b>5.4</b> 応用</a></li>
+<li class="chapter" data-level="5.5" data-path="05_case_five.html"><a href="05_case_five.html#参考資料-4"><i class="fa fa-check"></i><b>5.5</b> 参考資料</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">データハンドリングFAQ v0.1</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="case-3-特定期間の指定切り出し問題" class="section level1">
+<h1><span class="header-section-number">3</span> Case 3: 特定期間の指定･切り出し問題</h1>
+<p>ここでは、lesson2で準備した<code>df_log</code>という仮想ログデータを用いて、一定期間での集計をまとめることを目指します。その中でlubridateのintervalオブジェクトと<code>%within%</code>演算子を説明します。</p>
+<div id="想定シナリオ" class="section level2">
+<h2><span class="header-section-number">3.1</span> 想定シナリオ</h2>
+<p>lesson2で作成したアイテム購入ログデータを元に、1/16から1/31までを曜日別集計を行います:</p>
+<ul>
+<li>期間内購入件数</li>
+<li>期間内売上合計</li>
+<li>期間内購入単価平均</li>
+</ul>
+<p>この集計により、その期間での売上を検証することができます。</p>
+<p>また、特定の期間とそれ以外の期間での比較を行います:</p>
+<ul>
+<li>購入件数の比較</li>
+<li>売上合計の比較</li>
+</ul>
+<p>これにより、期間別の比較をすることができます。</p>
+</div>
+<div id="処理の実行" class="section level2">
+<h2><span class="header-section-number">3.2</span> 処理の実行</h2>
+<div id="パッケージ読み込み" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> パッケージ読み込み</h3>
+<p>ここで使用するパッケージを読み込みます:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+<span class="kw">library</span>(lubridate)
+<span class="kw">library</span>(gridExtra)</code></pre>
+</div>
+<div id="データ読み込み" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> データ読み込み</h3>
+<p>lesson2で作成したcsvを読み込みます。<code>readr::read_csv()</code>を使います:</p>
+<pre class="sourceCode r"><code class="sourceCode r">df_log &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;df_log.csv&quot;</span>)</code></pre>
+</div>
+<div id="データハンドリングと可視化" class="section level3">
+<h3><span class="header-section-number">3.2.3</span> データハンドリングと可視化</h3>
+<div id="特定期間を取り出す" class="section level4">
+<h4><span class="header-section-number">3.2.3.1</span> 特定期間を取り出す</h4>
+<p>特定の期間でどれだけ売上があったかを集計してデータセットにします。基本的な流れは以下のとおりです:</p>
+<ul>
+<li>特定期間を表すietervalオブジェクトを作成</li>
+<li>特定期間のデータを抽出</li>
+<li>各種集計を実施</li>
+</ul>
+<p>実際のRのコードは以下のようになります:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># intervalオブジェクトを生成</span>
+target_interval &lt;-<span class="st"> </span><span class="kw">interval</span>(
+  <span class="dt">start =</span> <span class="kw">ymd</span>(<span class="st">&quot;2018-1-16&quot;</span>),
+  <span class="dt">end =</span> <span class="kw">ymd</span>(<span class="st">&quot;2018-1-31&quot;</span>)
+)
+
+<span class="co"># ターゲット期間のみを取り出して集計</span>
+<span class="co"># 指定が効いているのを確認するため日別集計</span>
+df_log_interval &lt;-<span class="st"> </span>df_log <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(stamp <span class="op">%within%</span><span class="st"> </span>target_interval) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">date =</span> <span class="kw">date</span>(stamp)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(date) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(
+    <span class="dt">n_buy =</span> <span class="kw">n</span>(),
+    <span class="dt">value_buy =</span> <span class="kw">sum</span>(value),
+    <span class="dt">mean_buy =</span> <span class="kw">mean</span>(value)
+  )</code></pre>
+<p>この処理を行ったデータセットは以下のようになります:</p>
+<pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(df_log_interval, <span class="dv">10</span>))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">date</th>
+<th align="right">n_buy</th>
+<th align="right">value_buy</th>
+<th align="right">mean_buy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2018-01-16</td>
+<td align="right">195</td>
+<td align="right">73500</td>
+<td align="right">376.9231</td>
+</tr>
+<tr class="even">
+<td align="left">2018-01-17</td>
+<td align="right">191</td>
+<td align="right">67600</td>
+<td align="right">353.9267</td>
+</tr>
+<tr class="odd">
+<td align="left">2018-01-18</td>
+<td align="right">204</td>
+<td align="right">68700</td>
+<td align="right">336.7647</td>
+</tr>
+<tr class="even">
+<td align="left">2018-01-19</td>
+<td align="right">186</td>
+<td align="right">67000</td>
+<td align="right">360.2151</td>
+</tr>
+<tr class="odd">
+<td align="left">2018-01-20</td>
+<td align="right">188</td>
+<td align="right">79200</td>
+<td align="right">421.2766</td>
+</tr>
+<tr class="even">
+<td align="left">2018-01-21</td>
+<td align="right">196</td>
+<td align="right">73400</td>
+<td align="right">374.4898</td>
+</tr>
+<tr class="odd">
+<td align="left">2018-01-22</td>
+<td align="right">199</td>
+<td align="right">70900</td>
+<td align="right">356.2814</td>
+</tr>
+<tr class="even">
+<td align="left">2018-01-23</td>
+<td align="right">216</td>
+<td align="right">85200</td>
+<td align="right">394.4444</td>
+</tr>
+<tr class="odd">
+<td align="left">2018-01-24</td>
+<td align="right">188</td>
+<td align="right">58400</td>
+<td align="right">310.6383</td>
+</tr>
+<tr class="even">
+<td align="left">2018-01-25</td>
+<td align="right">217</td>
+<td align="right">74900</td>
+<td align="right">345.1613</td>
+</tr>
+</tbody>
+</table>
+<p>このデータを元にggplot2で可視化してみます:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 指定区間を取り出した範囲で可視化</span>
+p_int_date &lt;-<span class="st"> </span><span class="kw">ggplot</span>(df_log_interval)
+p_int_date1 &lt;-<span class="st"> </span>p_int_date <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> date, <span class="dt">y =</span> n_buy))
+p_int_date2 &lt;-<span class="st"> </span>p_int_date <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> date, <span class="dt">y =</span> value_buy))
+p_int_date3 &lt;-<span class="st"> </span>p_int_date <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> date, <span class="dt">y =</span> mean_buy))
+<span class="kw">grid.arrange</span>(p_int_date1, p_int_date2, p_int_date3, <span class="dt">nrow =</span> <span class="dv">2</span>)</code></pre>
+<p><img src="data_handling_faq_v0.1_files/figure-html/05_interval_plot-1.png" width="672" /></p>
+<p>ついでに、指定期間との比較をやってみます</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 区間指定の応用。一定期間とそれ以外で検証</span>
+<span class="co"># filterではなくif_elseでmutateする</span>
+<span class="co"># 3つ以上ならcase_whenでパターンを準備すればOK</span>
+
+df_log_interval_comp &lt;-<span class="st"> </span>df_log <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">target =</span> <span class="kw">if_else</span>(
+    stamp <span class="op">%within%</span><span class="st"> </span>target_interval, <span class="st">&quot;target&quot;</span>, <span class="st">&quot;other&quot;</span>
+  )) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">hour =</span> <span class="kw">hour</span>(stamp)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(hour, target) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(
+    <span class="dt">n_buy =</span> <span class="kw">n</span>(),
+    <span class="dt">value_buy =</span> <span class="kw">sum</span>(value),
+    <span class="dt">mean_buy =</span> <span class="kw">mean</span>(value)
+  )</code></pre>
+<p>この処理を行ったデータセットは以下のようになります:</p>
+<pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(df_log_interval_comp, <span class="dv">10</span>))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">hour</th>
+<th align="left">target</th>
+<th align="right">n_buy</th>
+<th align="right">value_buy</th>
+<th align="right">mean_buy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0</td>
+<td align="left">other</td>
+<td align="right">306</td>
+<td align="right">108500</td>
+<td align="right">354.5752</td>
+</tr>
+<tr class="even">
+<td align="right">0</td>
+<td align="left">target</td>
+<td align="right">129</td>
+<td align="right">43100</td>
+<td align="right">334.1085</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">other</td>
+<td align="right">293</td>
+<td align="right">112300</td>
+<td align="right">383.2765</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="left">target</td>
+<td align="right">111</td>
+<td align="right">41000</td>
+<td align="right">369.3694</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="left">other</td>
+<td align="right">307</td>
+<td align="right">112300</td>
+<td align="right">365.7980</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">target</td>
+<td align="right">127</td>
+<td align="right">52600</td>
+<td align="right">414.1732</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="left">other</td>
+<td align="right">277</td>
+<td align="right">110000</td>
+<td align="right">397.1119</td>
+</tr>
+<tr class="even">
+<td align="right">3</td>
+<td align="left">target</td>
+<td align="right">121</td>
+<td align="right">41200</td>
+<td align="right">340.4959</td>
+</tr>
+<tr class="odd">
+<td align="right">4</td>
+<td align="left">other</td>
+<td align="right">290</td>
+<td align="right">113300</td>
+<td align="right">390.6897</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="left">target</td>
+<td align="right">139</td>
+<td align="right">48900</td>
+<td align="right">351.7986</td>
+</tr>
+</tbody>
+</table>
+<p>このデータを元にggplot2で可視化してみます:</p>
+<pre class="sourceCode r"><code class="sourceCode r">p_int_comp_date &lt;-<span class="st"> </span><span class="kw">ggplot</span>(df_log_interval_comp)
+p_int_comp_date1 &lt;-<span class="st"> </span>p_int_comp_date <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> target, <span class="dt">y =</span> mean_buy, <span class="dt">color =</span> target)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">coord_flip</span>()
+p_int_comp_date2 &lt;-<span class="st"> </span>p_int_comp_date <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> hour, <span class="dt">y =</span> mean_buy, <span class="dt">color =</span> target))
+<span class="kw">grid.arrange</span>(p_int_comp_date1, p_int_comp_date2, <span class="dt">nrow =</span> <span class="dv">2</span>)</code></pre>
+<p><img src="data_handling_faq_v0.1_files/figure-html/05_interval_comp_plot-1.png" width="672" /></p>
+</div>
+</div>
+<div id="解説-2" class="section level3">
+<h3><span class="header-section-number">3.2.4</span> 解説</h3>
+<p>今回のポイントは、「この日時からこの日時まで」という特定の期間を示すintervalオブジェクトです。</p>
+<p>lubridateパッケージには、独自でintervalクラスが実装されています:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 使う日時データを準備</span>
+
+x1 &lt;-<span class="st"> </span><span class="kw">ymd_hms</span>(<span class="st">&quot;2018-02-23 17:50:00&quot;</span>)
+x2 &lt;-<span class="st"> </span><span class="kw">ymd_hms</span>(<span class="st">&quot;2018-02-25 17:50:00&quot;</span>)
+
+<span class="co"># intervalオブジェクトを作成</span>
+x_i &lt;-<span class="st"> </span><span class="kw">interval</span>(
+  <span class="dt">start =</span> x1,
+  <span class="dt">end =</span> x1 <span class="op">+</span><span class="st"> </span><span class="kw">days</span>(<span class="dv">1</span>)
+)
+
+<span class="co"># そのまま出してみる</span>
+x_i
+<span class="co">#&gt;  [1] 2018-02-23 17:50:00 UTC--2018-02-24 17:50:00 UTC</span>
+
+<span class="co"># 開始日時を取得</span>
+<span class="kw">int_start</span>(x_i)
+<span class="co">#&gt;  [1] &quot;2018-02-23 17:50:00 UTC&quot;</span>
+
+<span class="co"># 終了日時を取得</span>
+<span class="kw">int_end</span>(x_i)
+<span class="co">#&gt;  [1] &quot;2018-02-24 17:50:00 UTC&quot;</span>
+
+<span class="co"># 時間の幅を取得</span>
+<span class="kw">int_length</span>(x_i)
+<span class="co">#&gt;  [1] 86400</span>
+
+<span class="co"># interval作成用の%--%演算子</span>
+
+x1 <span class="op">%--%</span><span class="st"> </span>x2
+<span class="co">#&gt;  [1] 2018-02-23 17:50:00 UTC--2018-02-25 17:50:00 UTC</span></code></pre>
+<p>intervalオブジェクトは時間的な幅を秒単位で保持し、それに属性(attribute)で開始日時とタイムゾーン、そしてclass情報を付与しています:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 中身を強制的に出力</span>
+<span class="co"># 1日は86400秒</span>
+<span class="kw">cat</span>(x_i)
+<span class="co">#&gt;  86400</span>
+
+<span class="co"># 属性を出力してみる</span>
+<span class="kw">attributes</span>(x_i)
+<span class="co">#&gt;  $start</span>
+<span class="co">#&gt;  [1] &quot;2018-02-23 17:50:00 UTC&quot;</span>
+<span class="co">#&gt;  </span>
+<span class="co">#&gt;  $tzone</span>
+<span class="co">#&gt;  [1] &quot;UTC&quot;</span>
+<span class="co">#&gt;  </span>
+<span class="co">#&gt;  $class</span>
+<span class="co">#&gt;  [1] &quot;Interval&quot;</span>
+<span class="co">#&gt;  attr(,&quot;package&quot;)</span>
+<span class="co">#&gt;  [1] &quot;lubridate&quot;</span></code></pre>
+<p>このあたりが理解できていれば、lesson2-4の内容を応用していろいろいじれることはわかるかと思います。このintervalオブジェクトに関する便利な関数がlubridateパッケージに準備してあります:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># intervalを準備</span>
+x_i1 &lt;-<span class="st"> </span><span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="st">&quot;2018-01-01&quot;</span>), <span class="kw">ymd</span>(<span class="st">&quot;2018-01-31&quot;</span>))
+x_i2 &lt;-<span class="st"> </span><span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="st">&quot;2018-01-16&quot;</span>), <span class="kw">ymd</span>(<span class="st">&quot;2018-02-16&quot;</span>))
+x_i3 &lt;-<span class="st"> </span><span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="st">&quot;2018-02-01&quot;</span>), <span class="kw">ymd</span>(<span class="st">&quot;2018-02-28&quot;</span>))
+
+<span class="co"># intervalをずらす</span>
+<span class="co"># 第二引数には時間的な幅(duration(), days()など)</span>
+<span class="kw">int_shift</span>(x_i1, <span class="kw">days</span>(<span class="dv">5</span>))
+<span class="co">#&gt;  [1] 2018-01-06 UTC--2018-02-05 UTC</span>
+
+<span class="co"># 開始と終了を反転</span>
+x_i1_flip &lt;-<span class="st"> </span><span class="kw">int_flip</span>(x_i1)
+x_i1_flip
+<span class="co">#&gt;  [1] 2018-01-31 UTC--2018-01-01 UTC</span>
+
+<span class="co"># 開始と終了を整える(順番をきれいにする)</span>
+<span class="kw">int_standardize</span>(x_i1_flip)
+<span class="co">#&gt;  [1] 2018-01-01 UTC--2018-01-31 UTC</span>
+
+<span class="co"># 2つの区間が重なっているかどう(オーバーラップ)か判定</span>
+<span class="co"># これはオーバーラップしているのでTRUE</span>
+<span class="kw">int_overlaps</span>(x_i1, x_i2)
+<span class="co">#&gt;  [1] TRUE</span>
+
+<span class="co"># これはオーバーラップしてないのでFALSE</span>
+<span class="kw">int_overlaps</span>(x_i1, x_i3)
+<span class="co">#&gt;  [1] FALSE</span>
+
+<span class="co"># 2つのintervalで、開始and/or終了が同じかどうか(align)判定</span>
+<span class="co"># 説明用に新たにintervalを準備</span>
+x_i4 &lt;-<span class="st"> </span><span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="st">&quot;2018-01-01&quot;</span>), <span class="kw">ymd</span>(<span class="st">&quot;2018-02-16&quot;</span>))
+
+<span class="co"># x_i4の開始はx_i1の開始と揃っているので、これはTRUE</span>
+<span class="kw">int_aligns</span>(x_i4, x_i1)
+<span class="co">#&gt;  [1] TRUE</span>
+
+<span class="co"># x_i4の終了はx_i2の終了と揃っているので、これもTRUE</span>
+<span class="kw">int_aligns</span>(x_i4, x_i2)
+<span class="co">#&gt;  [1] TRUE</span>
+
+<span class="co"># x_i4はx_i3の開始とも終了とも揃っていないので、これはFALSE</span>
+<span class="kw">int_aligns</span>(x_i4, x_i3)
+<span class="co">#&gt;  [1] FALSE</span>
+
+<span class="co"># 日時ベクトルの要素で、その差分を利用してintervalベクトルを作成</span>
+<span class="co"># 説明用に日付のベクトルを生成</span>
+dates &lt;-<span class="st"> </span><span class="kw">now</span>() <span class="op">+</span><span class="st"> </span><span class="kw">days</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)
+dates
+<span class="co">#&gt;  [1] &quot;2019-09-01 11:50:16 JST&quot; &quot;2019-09-02 11:50:16 JST&quot;</span>
+<span class="co">#&gt;  [3] &quot;2019-09-03 11:50:16 JST&quot;</span>
+
+<span class="co"># 差分でintervalベクトルを生成</span>
+<span class="co"># この場合、3つの日時から区間をつくるので長さが2になる</span>
+<span class="kw">int_diff</span>(dates)
+<span class="co">#&gt;  [1] 2019-09-01 11:50:16 JST--2019-09-02 11:50:16 JST</span>
+<span class="co">#&gt;  [2] 2019-09-02 11:50:16 JST--2019-09-03 11:50:16 JST</span></code></pre>
+<p>また、「あるinterval/日時が、ある区間に含まれるかどうか」を判定する演算子として、lubridateには<code>%within%</code>が準備してあります。</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 説明用にintervalを準備</span>
+x_i1 &lt;-<span class="st"> </span><span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="st">&quot;2018-01-01&quot;</span>), <span class="kw">ymd</span>(<span class="st">&quot;2018-01-31&quot;</span>))
+x_i2 &lt;-<span class="st"> </span><span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="st">&quot;2018-01-16&quot;</span>), <span class="kw">ymd</span>(<span class="st">&quot;2018-01-31&quot;</span>))
+x_i3 &lt;-<span class="st"> </span><span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="st">&quot;2018-01-16&quot;</span>), <span class="kw">ymd</span>(<span class="st">&quot;2018-02-16&quot;</span>))
+
+<span class="co"># %within%演算子のテスト</span>
+<span class="co"># これは含まれるのでTRUE</span>
+<span class="kw">ymd</span>(<span class="st">&quot;2018-01-10&quot;</span>) <span class="op">%within%</span><span class="st"> </span>x_i1
+<span class="co">#&gt;  [1] TRUE</span>
+
+<span class="co"># これは含まれないのでFALSE</span>
+<span class="kw">ymd</span>(<span class="st">&quot;2018-02-10&quot;</span>) <span class="op">%within%</span><span class="st"> </span>x_i1
+<span class="co">#&gt;  [1] FALSE</span>
+
+<span class="co"># intervalでの比較</span>
+<span class="co"># これは含まれるのでTRUE</span>
+x_i2 <span class="op">%within%</span><span class="st"> </span>x_i1
+<span class="co">#&gt;  [1] TRUE</span>
+
+<span class="co"># これは(オーバーラップしてるけけど)内包しているわけではないのでFALSE</span>
+x_i3 <span class="op">%within%</span><span class="st"> </span>x_i1
+<span class="co">#&gt;  [1] FALSE</span>
+
+<span class="co"># この演算子は「左が右に含まれるかどうか」を判定</span>
+<span class="co"># なので、これはFALSE</span>
+x_i1 <span class="op">%within%</span><span class="st"> </span>x_i2
+<span class="co">#&gt;  [1] FALSE</span></code></pre>
+<p>演算子の右にはintervalオブジェクトしか使えませんので注意してください。</p>
+</div>
+</div>
+<div id="参照" class="section level2">
+<h2><span class="header-section-number">3.3</span> 参照</h2>
+<dl>
+<dt><a href="http://lubridate.tidyverse.org/reference/interval.html">Utilities for creation and manipulation of Interval objects</a></dt>
+<dd><p>intervalオブジェクトを作成・操作する関数の説明</p>
+</dd>
+<dt><a href="http://lubridate.tidyverse.org/reference/Interval-class.html">Interval class</a></dt>
+<dd><p>intervalクラスの説明</p>
+</dd>
+<dt><a href="http://lubridate.tidyverse.org/reference/within-interval.html">Tests whether a date or interval falls within an interval</a></dt>
+<dd><p><code>%within%</code>演算子の説明</p>
+</dd>
+</dl>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="02_case_two.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="04_case_four.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
